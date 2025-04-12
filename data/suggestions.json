@@ -1,0 +1,32 @@
+{
+                "general": [
+                    "Would you like to know more about {model}'s performance?",
+                    "Interested in {model}'s customization options?",
+                    "Would you like to schedule a test drive for the {model}?",
+                    "Would you like to explore financing options for the {model}?"
+                ],
+                "performance": [
+                    "Would you like to know about {model}'s fuel efficiency?",
+                    "Interested in {model}'s transmission options?",
+                    "Would you like to compare {model}'s performance with other models?",
+                    "Would you like to know about {model}'s warranty coverage?"
+                ],
+                "customization": [
+                    "Would you like to see {model}'s available colors?",
+                    "Interested in {model}'s interior package options?",
+                    "Would you like to know about {model}'s exclusive customization features?",
+                    "Would you like to explore {model}'s performance upgrade options?"
+                ],
+                "pricing": [
+                    "Would you like to know about financing options for the {model}?",
+                    "Interested in lease options for the {model}?",
+                    "Would you like to know about maintenance packages for the {model}?",
+                    "Would you like to schedule a test drive for the {model}?"
+                ],
+                "features": [
+                    "Would you like to know about {model}'s interior features?",
+                    "Interested in {model}'s technology features?",
+                    "Would you like to know about {model}'s safety features?",
+                    "Would you like to explore {model}'s comfort features?"
+                ]
+            }

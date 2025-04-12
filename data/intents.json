@@ -1,0 +1,268 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi", "Hey", "Hello", "Good morning", "Good afternoon", "Good evening", "How are you", "Whats up", "Hows it going"
+      ],
+      "responses": [
+        "Welcome to Porsche! How can I elevate your driving dreams today?",
+        "Hello! Ready to explore the world of Porsche? Lets dive in.",
+        "Hey there! I am here to guide you through our exceptional lineup. What are you curious about?",
+        "Good to see you! Want to discover Porsche latest innovations or a specific model?"
+      ],
+      "context": ["greeting"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye", "Goodbye", "See you later", "See you", "Take care", "Have a good day", "Thanks for your help"
+      ],
+      "responses": [
+        "Thanks for stopping by Porsche. See you on the road!",
+        "Take care! Hope to welcome you back soon at one of our dealerships.",
+        "Goodbye! Whenever youre ready for your next journey, we will be here."
+      ],
+      "context": ["goodbye"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks", "Thank you", "Thank you very much", "Thanks a lot", "Appreciate it", "Much appreciated"
+      ],
+      "responses": [
+        "Youre welcome! Want to explore more models or tech?",
+        "Anytime! Curious about custom builds or performance specs?",
+        "Glad to help! Let me know if you would like to explore our electric or performance lineups."
+      ],
+      "context": ["thanks"]
+    },
+    {
+      "tag": "test_drive",
+      "patterns": [
+        "Can I test drive", "How to test drive", "Schedule test drive", "Book test drive", "Test drive information", "Want to test drive", "Test drive options", "Schedule a test drive"
+      ],
+      "responses": [
+        "Absolutely! Schedule your test drive at <a href='https://dealer.porsche.com/in/india/en-GB/Porsche-India-Lead?q=TestDrive&utm_content=Google_Sitelink&utm_source=google&utm_medium=cpc&utm_campaign=AGL-Search-Cayenne-Brand-Mumbai&utm_campaign_id=22359932575&utm_adgroupid=176982114655&utm_keyword=porsche%20price%20in%20india&utm_device=c&utm_placement=&utm_network=g&utm_creativeid=743342308529&utm_matchtype=b&gad_source=1&gclid=Cj0KCQjw2N2_BhCAARIsAK4pEkXqFHqvZBRiopQ_UxkmBaI2ErceF8-E2LGSK2Dj0WgV4FW_3h7OCp4aAhvqEALw_wcB' target='_blank'>Book a test drive</a>. Choose your location and model.",
+        "Yes! You can book a test drive online at <a href='https://dealer.porsche.com/in/india/en-GB/Porsche-India-Lead?q=TestDrive&utm_content=Google_Sitelink&utm_source=google&utm_medium=cpc&utm_campaign=AGL-Search-Cayenne-Brand-Mumbai&utm_campaign_id=22359932575&utm_adgroupid=176982114655&utm_keyword=porsche%20price%20in%20india&utm_device=c&utm_placement=&utm_network=g&utm_creativeid=743342308529&utm_matchtype=b&gad_source=1&gclid=Cj0KCQjw2N2_BhCAARIsAK4pEkXqFHqvZBRiopQ_UxkmBaI2ErceF8-E2LGSK2Dj0WgV4FW_3h7OCp4aAhvqEALw_wcB' target='_blank'>Book a test drive</a>. Choose your location and model.",
+        "Test drives are easy to schedule. Just head to <a href='https://dealer.porsche.com/in/india/en-GB/Porsche-India-Lead?q=TestDrive&utm_content=Google_Sitelink&utm_source=google&utm_medium=cpc&utm_campaign=AGL-Search-Cayenne-Brand-Mumbai&utm_campaign_id=22359932575&utm_adgroupid=176982114655&utm_keyword=porsche%20price%20in%20india&utm_device=c&utm_placement=&utm_network=g&utm_creativeid=743342308529&utm_matchtype=b&gad_source=1&gclid=Cj0KCQjw2N2_BhCAARIsAK4pEkXqFHqvZBRiopQ_UxkmBaI2ErceF8-E2LGSK2Dj0WgV4FW_3h7OCp4aAhvqEALw_wcB' target='_blank'>Book a test drive</a> and pick your Porsche."
+      ],
+      "context": ["test_drive"]
+    },
+    {
+      "tag": "subjective_questions",
+      "patterns": [
+        "fun to drive", "everyday driving", "best handling", "favorite model", "fastest Porsche", "best design", "most popular model", "people love the most", "iconic Porsche", "best Porsche", "sporty feel", "luxury daily driver"
+      ],
+      "responses": [
+        "Looking for fun? The 911 is a timeless thrill—light, agile, and iconic. What kind of driving excites you most?",
+        "For daily drives with style and comfort, the Macan and Cayenne are top picks.",
+        "If precision handling is your thing, the 718 Cayman and 911 are pure driving machines.",
+        "Tough choice! The 911 wins hearts for legacy and feel, but the Taycan brings electrifying innovation. What’s your vibe—classic or cutting-edge?",
+        "Speed demons love the 911 Turbo S and Taycan Turbo S—both rocket from 0 to60 in under 3 seconds. Prefer gas or electric?",
+        "The 911 is design royalty, but the Taycan’s futuristic lines are turning heads too. Do you lean toward timeless or modern looks?",
+        "The 911 remains a fan-favorite, but the Taycan is gaining serious love. Would you go with heritage or high-tech?"
+      ],
+      "context": ["subjective_questions"]
+    },
+    {
+      "tag": "model_comparison",
+      "patterns": [
+        "compare models", "difference between models", "differences", "Porsche comparison", "compare Porsche lineup", "choosing", "which choose", "recommendation", "SUV vs sports car"
+      ],
+      "responses": [
+        "I can help with that! Explore features, performance, and pricing here: <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>Porsche Compare Tool</a>. Want a quick rundown?",
+        "Happy to assist! Check out the comparison tool here: <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>Compare Porsche Models</a>. Or tell me what you're looking for.",
+        "Not sure which Porsche fits you best? Let's break it down. You can also compare the models with different specs here: <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>Compare Models</a>."
+      ],
+      "context": ["model_comparison"]
+    },
+    {
+      "tag": "vibe_classic_cutting_edge",
+      "patterns": [
+        "classic", "cutting-edge", "vintage", "futuristic", "timeless", "modern"
+      ],
+      "responses": [
+        "Ooo, classic or cutting-edge? If you want to go old-school cool, the Porsche 911 is your perfect sidekick. But if you're into futuristic vibes, the Taycan will leave you speechless. What’s your flavor—retro or sci-fi?",
+        "Classic is timeless, and the 911 is the king of that. But if you're feeling more like ‘I want something sleek and high-tech,’ the Taycan will definitely give you chills. So, what’s your pick—old-school legend or next-gen rocket?",
+        "If you’re into classic vibes, the 911 is basically a Porsche icon. But if you’re looking for something with all the futuristic bells and whistles, the Taycan is the future of speed. Which one’s giving you those heartbeats?"
+      ],
+      "context": ["vibe_classic_cutting_edge"]
+    },
+    {
+      "tag": "preference_gas_electric",
+      "patterns": [
+        "gas", "electric", "engine preference", "electric power", "traditional gas-powered", "eco-friendly"
+      ],
+      "responses": [
+        "Gas engines? They’re like your favorite playlist on max volume—raw, loud, and powerful. But if you're leaning green, the Taycan's electric power delivers instant torque without the noise. So, do you wanna feel the roar or the zip? Your choice!",
+        "Are you a 'feel the rumble' kind of person with a gas engine, or is ‘electric future’ calling your name with a Taycan’s smooth, eco-friendly ride? No wrong answers here—just a lot of options!",
+        "Gas engines give you that driving thrill, but electric is like 'whoa, that was fast with zero emissions. Are you in the mood to fire up the engine, or are you ready to go electric and leave the competition in the dust?"
+      ],
+      "context": ["preference_gas_electric"]
+    },
+    {
+      "tag": "timeless_modern_looks",
+      "patterns": [
+        "timeless", "modern", "classic looks", "futuristic designs", "traditional style", "sleek designs"
+      ],
+      "responses": [
+        "Classic looks are always in style. The 911 got that I am too cool for school vibe. But if youre thinking more I just stepped out of the future, the Taycan will have everyone staring. What is your aesthetic—timeless icon or sleek, modern masterpiece?",
+        "Timeless elegance? The 911 is basically the James Bond of cars. But if modern is your jam, the Taycan is a beauty straight out of tomorrow. Which one is calling your name?",
+        "Are you feeling timeless like the 911, or more like ‘I want to drive something that looks like it’s from the year 2050’? Both are jaw-dropping, you just gotta pick your vibe!"
+      ],
+      "context": ["timeless_modern_looks"]
+    },
+    {
+      "tag": "heritage_high_tech",
+      "patterns": [
+        "heritage", "high-tech", "Porsche legacy", "cutting-edge tech", "traditional Porsche", "electric innovation"
+      ],
+      "responses": [
+        "If you are all about heritage, the 911 is your Porsche soulmate. But if you are leaning towards the future, the Taycan is all about tech, power, and making a statement. Are you ready for the past or the future—or, heck, why not both?",
+        "You have got two roads to go down here: the Porsche 911, with its rich legacy and pure driving joy, or the Taycan, which is packed with tech and innovation. Do you want to take the wheel of history or the future?",
+        "Heritage is all about the 911 racing DNA, but if you are into high-tech wizardry, the Taycan is a whole new level of cool. So, do you want to cruise in a legend, or drive into the future?"
+      ],
+      "context": ["heritage_high_tech"]
+    },
+    {
+      "tag": "driving_style_preference",
+      "patterns": [
+        "speed", "comfort", "thrilling drive", "relaxed drive", "performance", "luxury"
+      ],
+      "responses": [
+        "Are you all about speed and heart-pumping excitement? The 911 or Taycan Turbo S will have you feeling like a superhero. If you would prefer something with more luxury and comfort but still a beast on the road, the Cayenne or Macan are your go-tos. What is your vibe—thrill ride or smooth cruise?",
+        "Need speed to feel alive? The 911 your speedster. But if you want a comfy ride with plenty of power, the Macan or Cayenne might be more your pace.",
+        "For those who like to feel the wind in their hair (and the engine underfoot), the 911 or Taycan will not disappoint. But if you prefer a more laid-back yet luxurious experience, the Macan and Cayenne are made for you. What is the driving experience you are after?"
+      ],
+      "context": ["driving_style_preference"]
+    },
+    {
+      "tag": "color_preference",
+      "patterns": [
+        "bold color", "classic color", "Racing Yellow", "black", "silver", "Miami Blue", "timeless color", "subtle color"
+      ],
+      "responses": [
+        "Going bold with Racing Yellow or Miami Blue? You will definitely turn heads. If you are more into classic vibes, black, white, or silver always look sleek.",
+        "If you want something that screams Look at me, Racing Yellow or Miami Blue are your friends. But if youre all about the understated coolness, black or silver is where it is at.",
+        "Racing Yellow or Miami Blue? Youre definitely going to be the star of the show. If you are more of a classic cool person, black, white, or silver will have you looking sharp."
+      ],
+      "context": ["color_preference"]
+    },
+    {
+      "tag": "model_experience",
+      "patterns": [
+        "best model", "perfect Porsche", "Porsche recommendation", "best Porsche model", "ideal Porsche"
+      ],
+      "responses": [
+        "The best model is totally up to you! For speed and thrills, the 911 is your top contender. If you want an electric superstar, the Taycan is hard to beat. Want an SUV with a touch of class? The Cayenne or Macan might be perfect for you. Which one are you leaning toward?",
+        "If you are after adrenaline, the 911 is basically the king. Need luxury and power in an SUV? The Cayenne or Macan are perfect. Or if youre into electric performance, the Taycan delivers. What are you in the mood for—speed, luxury, or future tech?",
+        "The 911 is all about that Porsche legacy, but the Taycan is for those looking to take the road into the future. If you want a bit of everything, the Cayenne or Macan could be perfect. Which one speaks to you?"
+      ],
+      "context": ["model_experience"]
+    },
+    {
+      "tag": "customization_options",
+      "patterns": [
+        "customization options", "can I customize", "personalize my Porsche", "custom Porsche", "design my Porsche", "build my own Porsche", "choose interior", "color and trim options", "custom builds", "Porsche configurator"
+      ],
+      "responses": [
+        "Absolutely! You can customize every detail—from exterior colors to wheel designs and interior finishes. Start building your dream Porsche here: <a href='https://www.porsche.com/usa/modelstart/' target='_blank'>Porsche Configurator</a>.",
+        "Looking to make it yours? Use the Porsche Configurator to pick colors, wheels, trim, and even tech features. Ready to design your own ride? <a href='https://www.porsche.com/usa/modelstart/' target='_blank'>Build Now</a>.",
+        "Yes! Porsche offers full customization—inside and out. Whether its bold paint, sporty seats, or high-end trim, you are in control. Start your journey here: <a href='https://www.porsche.com/usa/modelstart/' target='_blank'>Build Your Porsche</a>."
+      ],
+      "context": ["customization_options"]
+    },
+    {
+  "tag": "fastest_model",
+  "patterns": [
+    "fastest?",
+    "Fastest Porsche 911?",
+    "Which highest top speed?",
+    "with highest speed",
+    "Fastest 911 model"
+  ],
+  "responses": [
+    "The fastest Porsche 911 is the **911 Turbo S**, with a top speed of 330 km/h (205 mph)**. Want to go full throttle?"
+  ],
+  "context": ["fastest_model"]
+},
+{
+  "tag": "most_torque",
+  "patterns": [
+    "most torque?",
+    "Most torque in a 911?",
+    "which model has the max torque",
+    "Porsche with highest torque",
+    "Which model has the most torque?"
+  ],
+  "responses": [
+    "The 911 Turbo S leads the pack with a massive 800 Nm (590 lb-ft) of torque. That is serious pulling power."
+  ],
+  "context": ["most_torque"]
+},
+{
+  "tag": "cheapest_model",
+  "patterns": [
+    "Which budget-friendly ?",
+    "Cheapest ",
+    "911 with lowest price",
+    "Entry-level ",
+    "Affordable"
+  ],
+  "responses": [
+    "The most budget-friendly 911 is the Porsche 911 Carrera. It is the perfect way to start your Porsche journey without sacrificing performance or design."
+  ],
+  "context": ["cheapest_model"]
+},
+{
+  "tag": "best_output_per_liter",
+  "patterns": [
+    "best power per liter?",
+    "highest kW per liter",
+    "Best output per liter",
+    "Most efficient engine output",
+    "Porsche with best power-to-displacement"
+  ],
+  "responses": [
+    "That would be the 911 GT3 RS and 911 S/T, pushing over 87 to 88 kW per liter thanks to their high-revving 4.0L naturally aspirated flat-6 engines. Pure precision engineering."
+  ],
+  "context": ["best_output_per_liter"]
+},
+{
+  "tag": "most_color_options",
+  "patterns": [
+    "Which most color options?",
+    "Most colors for Porsche 911",
+    "Porsche with best color choices",
+    "911 model with most custom colors",
+    "Most colorful Porsche"
+  ],
+  "responses": [
+    "Models like the 911 GT3, Turbo S, and S/T offer the widest range of bold and custom colors—including shades like Racing Yellow, Shark Blue, and Python Green. Want to build your dream combo?"
+  ],
+  "context": ["most_color_options"]
+},
+{
+  "tag": "model_spec_query",
+  "patterns": [
+    "What is the {attribute} of the {model}?",
+    "How much {attribute} does the {model} have?",
+    "What is the {attribute} for the {model} in {unit}?",
+    "Tell me the {attribute} of the {model}",
+    "Which model has the highest {attribute}?",
+    "Which Porsche has the best {attribute}?",
+    "Which 911 model has the most {attribute}?",
+    "Which model offers the maximum {attribute}?",
+    "Which model has the lowest {attribute}?",
+    "Which model gives the best {attribute} in {unit}?"
+  ],
+  "responses": [
+    "{model} has the highest {attribute} at {value} {unit}.",
+    "That would be the {model} with a {attribute} of {value} {unit}.",
+    "Looking for performance? {model} tops the charts for {attribute}: {value} {unit}."
+  ],
+  "context": ["model_spec_query"]
+}
+  ]
+}

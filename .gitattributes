@@ -1,0 +1,4 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.txt filter=lfs diff=lfs merge=lfs -text
+chatbot_model.pth filter=lfs diff=lfs merge=lfs -text
+glove.6B.100d.txt filter=lfs diff=lfs merge=lfs -text
