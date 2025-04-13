@@ -5,6 +5,10 @@ import os
 import traceback
 import logging
 
+
+import nltk
+
+# nltk.data.path.append("/usr/share/nltk_data")
 # Initialize the Flask app
 app = Flask(__name__)
 app.secret_key = "your-secret-key-here"

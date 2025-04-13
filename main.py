@@ -365,7 +365,7 @@ class PorscheBot:
             print(f"Predicted probability: {prob.item()}")
 
             # If confidence is high enough, respond based on the intent
-            if prob.item() > 0.9996:
+            if prob.item() > 0.9998:
                 # Iterate through intents and find the matching one
                 for intent in self.intents:
                     print(f"Checking intent: {intent['tag']}")
@@ -395,7 +395,7 @@ class PorscheBot:
                         }
 
             # Default response if no intent matched or confidence is low
-            if prob.item() <= 0.9996:
+            if prob.item() <= 0.9998:
                 attribute, mode = self.extract_attribute_question(user_message)
 
                 if attribute and mode:
@@ -403,9 +403,9 @@ class PorscheBot:
                     if model:
                         model_name = model["name"]
                         value = model["features"].get(attribute)
-                        response = f"Ah, you’ve got an eye for quality! The {model_name} serves up the {attribute.replace('_', ' ')} with a delightful {value}. Not bad, right?"
+                        response = f"Nice choice, {state['userName']}! The {model_name} brings out the {attribute.replace('_', ' ')} with a stunning {value}. Pretty impressive, huh?"
                         suggestions = [
-                            "Want to play around with more features?",
+                            "Want to explore more features?",
                             "Back to the main menu",
                         ]
                         return {
@@ -428,22 +428,38 @@ class PorscheBot:
                         or "bore" in user_message.lower()
                     ):
                         response = f"""
-                        Meet the {car_info["name"]}'s beastly {car_info["features"]["cylinders"]}-cylinder engine! With a {car_info["features"]["displacement"]}L displacement,  
-                        it roars with a {car_info["features"]["bore"]} mm bore and a {car_info["features"]["stroke"]} mm stroke, reaching a wild {car_info["features"]["max_engine_speed"]} rpm.  
-                        Buckle up – it's a power trip!
+                        Buckle up, {state["userName"]}! The {car_info["name"]} rocks a {car_info["features"]["cylinders"]}-cylinder engine  
+                        with a {car_info["features"]["displacement"]}L displacement, {car_info["features"]["bore"]} mm bore, and a {car_info["features"]["stroke"]} mm stroke.  
+                        It revs up to a wild {car_info["features"]["max_engine_speed"]} rpm—yep, it’s got some serious bite. 😎
+
+                        <br><br>What would you like to know next? You can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
                         """
                     elif (
                         "transmission" in user_message.lower()
                         or "gearbox" in user_message.lower()
                     ):
-                        response = f"Shift into high gear with the {car_info['name']}'s {car_info['features']['transmission']} transmission system. Smooth rides await!"
+                        response = f"""
+                        Shifting made sweet, {state["userName"]}! The {car_info["name"]} comes equipped with a {car_info["features"]["transmission"]} transmission  
+                        that’s all about smooth, responsive performance—whether you're cruising or gunning it.
+
+                        <br><br>What would you like to know next? You can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
+                        """
+
                     elif (
                         "fuel" in user_message.lower()
                         or "economy" in user_message.lower()
                         or "mileage" in user_message.lower()
                     ):
-                        response = f"""The {car_info["name"]} is efficient too! With {car_info["features"]["fuel_type"]} fuel and a fuel economy of {car_info["features"]["fuel_economy"]},  
-                        you’ll be cruising without constantly visiting the gas station!"""
+                        response = f"""
+                        Good news, {state["userName"]} — the {car_info["name"]} isn’t just powerful, it’s smart with fuel too.  
+                        Running on {car_info["features"]["fuel_type"]}, it offers a solid {car_info["features"]["fuel_economy"]} fuel economy,  
+                        so you’ll spend more time driving and less time fueling up. ⛽
+
+                        <br><br>What would you like to know next? You can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
+                        """
                     elif (
                         "speed" in user_message.lower()
                         or "accelerate" in user_message.lower()
@@ -451,32 +467,116 @@ class PorscheBot:
                         or "top" in user_message.lower()
                     ):
                         response = f"""
-                        The {car_info["name"]} is all about speed – it hits a top speed of {car_info["features"]["Top Speed"]} and sprints from 0 to 60 mph in just {car_info["features"]["0-60 mph"]} seconds!  
-                        Hold on tight, this ride is a blur!
+                        Speed demon alert, {state["userName"]}! The {car_info["name"]} rockets from 0 to 60 mph in just {car_info["features"]["0-60 mph"]} seconds  
+                        and tops out at {car_info["features"]["Top Speed"]}. Blink and you might miss it! 🏁
+
+                        <br><br>Want to know how it handles at high speeds or how it compares to others in its class?
                         """
 
                     elif "torque" in user_message.lower():
                         response = f"""
-                        Ready to feel some serious push? The {car_info["name"]} delivers a thrilling max torque of {car_info["features"]["max_torque"]}.  
-                        Don’t worry – your seat will hold you in place!
+                        Hang on tight, {state["userName"]}! The {car_info["name"]} cranks out a max torque of {car_info["features"]["max_torque"]} —  
+                        enough to pin you to your seat when you hit the gas. 🚀
+
+                        <br><br>Curious about horsepower or how that torque translates on the road?
+                        """
+
+                    elif (
+                        "features" in user_message.lower()
+                        or "specs" in user_message.lower()
+                        or "specifications" in user_message.lower()
+                    ):
+                        response = f"""
+                        Buckle up, {state["userName"]}! The {car_info["name"]} rocks a <strong>{car_info["features"]["cylinders"]}</strong>-cylinder engine  
+                        with a <strong>{car_info["features"]["displacement"]}L</strong> displacement, <strong>{car_info["features"]["bore"]}</strong> mm bore, and a <strong>{car_info["features"]["stroke"]}</strong> mm stroke.  
+                        It revs up to a wild <strong>{car_info["features"]["max_engine_speed"]}</strong> rpm—yep, it’s got some serious bite. 😎
+
+                        <br><br>What would you like to know next? You can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
                         """
                     elif "wheelbase" in user_message.lower():
-                        response = f"The {car_info['name']} boasts a wheelbase of {car_info['features']['wheelbase']}, ensuring a smooth and stable ride. Perfect for those winding roads!"
+                        response = f"""
+                        Nice pick, {state["userName"]}! The {car_info["name"]} features a wheelbase of {car_info["features"]["wheelbase"]},  
+                        giving it great stability and comfort—especially on those twisty back roads.
+
+                        <br><br>Want to know about more features? You can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
+                        """
                     elif (
-                        "Compare" in user_message.lower()
-                        or "compare" in user_message.lower()
+                        "compare" in user_message.lower()
+                        or "comparison" in user_message.lower()
+                        or "difference" in user_message.lower()
+                        or "vs" in user_message.lower()
                     ):
-                        response = """Comparing models is a breeze! Explore these options and more at <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>porsche Model Comparison</a>."""
+                        mentioned_models = [
+                            model
+                            for model in self.car_data["models"]
+                            if model["name"].lower() in user_message.lower()
+                        ]
+
+                        if len(mentioned_models) >= 2:
+                            model_1 = mentioned_models[0]
+                            model_2 = mentioned_models[1]
+
+                            name1 = model_1["name"]
+                            name2 = model_2["name"]
+
+                            f1 = model_1["features"]
+                            f2 = model_2["features"]
+
+                            # Example comparison highlights (you can add more as needed)
+                            perf_diff = ""
+                            if f1["power_PS"] != f2["power_PS"]:
+                                perf_diff += f"- <strong>Horsepower:</strong> {name1} has {f1['power_PS']} PS vs {name2}'s {f2['power_PS']} PS<br>"
+                            if f1["0-60 mph"] != f2["0-60 mph"]:
+                                perf_diff += f"- <strong>0–60 mph:</strong> {name1} takes {f1['0-60 mph']}s, while {name2} does it in {f2['0-60 mph']}s<br>"
+                            if f1["Top Speed"] != f2["Top Speed"]:
+                                perf_diff += f"- <strong>Top Speed:</strong> {name1}: {f1['Top Speed']} | {name2}: {f2['Top Speed']}<br>"
+
+                            response = f"""
+                            Sure thing, {state["userName"]}! Let's compare the <strong>{name1}</strong> and <strong>{name2}</strong>.  
+                            <br><br>Here's how they stack up:
+                            <br>{perf_diff if perf_diff else "These two are quite similar in specs!"}  
+                            <br>You can do a full side-by-side breakdown here:  
+                            <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>
+                            <strong>Porsche Model Comparison Tool</strong></a> 🔍
+                            <br><br>Want a recommendation based on your driving style or preferences?
+                            """
+                        else:
+                            response = f"""
+                            I can definitely help with that, {state["userName"]}! Please mention two Porsche models to compare  
+                            (e.g., "Compare 911 Carrera vs 911 Dakar") or use the full comparison tool here:  
+                            <a href='https://www.porsche.com/middle-east/compare/?model-range=&price=any' target='_blank'>
+                            <strong>Porsche Model Comparison Tool</strong></a> 🔍
+                            """
+
+                        return {
+                            "response": response,
+                            "suggestions": ["Compare another two", "Back to main menu"],
+                            "state": state,
+                        }
                     elif (
                         "trunk" in user_message.lower()
                         or "boot" in user_message.lower()
                         or "storage" in user_message.lower()
                     ):
-                        response = f"The {car_info['name']} comes with {car_info['features']['trunk_volume']} of trunk space, perfect for all your gear – or just your weekend getaway!"
+                        response = f"""
+                        Packing for a trip, {state["userName"]}? The {car_info["name"]} offers {car_info["features"]["trunk_volume"]} of trunk space —  
+                        roomy enough for your gear, groceries, or a spontaneous weekend escape. 🎒🚗
+
+                        Need to know how it handles larger items or if the seats fold down for extra space?
+                        """
 
                     elif "custom" in user_message.lower():
-                        response = f"""The {car_info["name"]} offers a variety of customization options! From interior finishes to performance upgrades, you can make it truly yours.  
-                        Explore these options and more at <a href='https://www.porsche.com/usa/modelstart/' target='_blank'>porsche configurator</a>."""
+                        response = f"""
+                        Ready to make the {car_info["name"]} uniquely yours, {state["userName"]}? From luxurious interior finishes to performance upgrades,  
+                        <br><br>the customization options are endless. 🎨🚗
+
+                        Dive into the full range of options and start designing your dream car at the  
+                        <a href='https://www.porsche.com/usa/modelstart/' target='_blank'>Porsche Configurator</a>!
+
+                        <br><br>Want help choosing the perfect upgrades or colors for your style?
+                        """
 
                     elif "color" in user_message.lower():
                         best_colors = car_info["features"].get("best_colors", [])
@@ -484,49 +584,59 @@ class PorscheBot:
                             "available_colors", []
                         )
 
-                        response = f"The {car_info['name']} comes in a range of stunning colors including: <strong>{', '.join(available_colors)}</strong>."
+                        response = f"""
+                        The {car_info["name"]} is available in a stunning array of colors, including: <strong>{", ".join(available_colors)}</strong>.  
+                        Whether you're into bold statements or subtle elegance, there’s something for every style. 🎨
 
-                        if best_colors:
-                            response += f"<br><br>🚗 Our top recommended colors for this model are: <strong>{', '.join(best_colors)}</strong>."
-                            response += ' <br><br>Explore them all at the <a href="https://configurator.porsche.com/en-WW/model/9921B2/" target="_blank">Porsche Configurator</a>.'
+                        <br><br>If you're looking for the perfect match, our top recommended colors for this model are: <strong>{", ".join(best_colors)}</strong>!  
+                        These shades really make the {car_info["name"]} shine.
 
+                        <br><br>Want to explore all your options? Check them out at the  
+                        <a href="https://configurator.porsche.com/en-WW/model/9921B2/" target="_blank">Porsche Configurator</a>! 
+                        """
                     elif (
                         "performance" in user_message.lower()
                         or "power" in user_message.lower()
                     ):
                         response = f"""
-                        The {car_info["name"]} is a powerhouse! With {car_info["features"]["power_PS"]} PS ({car_info["features"]["power_kW"]} kW) of raw power and a max torque of {car_info["features"]["max_torque"]},  
-                        it goes from 0 to 60 mph in just {car_info["features"]["0-60 mph"]} seconds. Oh, and its top speed? {car_info["features"]["Top Speed"]}. Talk about performance!
+                        Ready for some serious power, {state["userName"]}? The {car_info["name"]} delivers a jaw-dropping {car_info["features"]["power_PS"]} PS ({car_info["features"]["power_kW"]} kW) of raw power,  
+                        paired with a monstrous max torque of {car_info["features"]["max_torque"]}. 🚗💨
+
+                        It rockets from 0 to 60 mph in just {car_info["features"]["0-60 mph"]} seconds, and tops out at a mind-blowing {car_info["features"]["Top Speed"]}.  
+                        Pure performance, ready to thrill!
+
+                        <br><br>Want to know about more features? you can explore the full range of features at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
                         """
+
                     elif (
                         "price" in user_message.lower()
                         or "cost" in user_message.lower()
                     ):
-                        response = f"The {car_info['name']} is priced between {car_info['features']['Price_Range']}. Worth every penny for the ride of your life!"
+                        response = f"""
+                        The {car_info["name"]} is priced between {car_info["features"]["Price_Range"]} — and trust me, it's worth every penny. 💰  
+                        For the ride of your life, it's an investment in performance, luxury, and pure driving joy!
+                        """
                     elif (
                         "output" in user_message.lower()
                         or "horsepower" in user_message.lower()
                         or "power" in user_message.lower()
                     ):
-                        response = f"The {car_info['name']} cranks out {car_info['features']['power_kW']} kW of pure power. Buckle up — it's not just a ride, it’s an adventure!"
-
-                    elif (
-                        "specs" in user_message.lower()
-                        or "features" in user_message.lower()
-                        or "specification" in user_message.lower()
-                    ):
                         response = f"""
-                        The {car_info["name"]} is a powerhouse! With {car_info["features"]["power_PS"]} PS ({car_info["features"]["power_kW"]} kW) of raw power and a max torque of {car_info["features"]["max_torque"]},  
-                        it goes from 0 to 60 mph in just {car_info["features"]["0-60 mph"]} seconds. Oh, and its top speed? {car_info["features"]["Top Speed"]}. Talk about performance!
+                        Get ready for a power-packed experience, {state["userName"]}! The {car_info["name"]} delivers an impressive {car_info["features"]["power_kW"]} kW of pure power. 💥  
+                        This isn’t just a car—it’s an adventure waiting to happen. 
+
+                        Want to know how it compares to others in terms of torque or top speed? Let me know!
                         """
-                        response += '<br><br>you can explore more about {car_info["name"]} the features of the at <a href={car_info["features"]["tech_specs"]} target="_blank">Porsche Technical Details</a>'
 
                     else:
-                        # Default comprehensive feature overview
+                        # Default comprehensive feature overview with a personalized greeting
                         response = f"""
-                        {car_info["features"]["tagline"]} 
-                        Whether you're after speed, power, or just a good-looking machine, it's got it all!  
-                        Get more details of {car_info["name"]} at <a href={car_info["features"]["tech_specs"]} target="_blank">Technical Details</a>."""
+                        Hi  {state["userName"]}! {car_info["features"]["tagline"]}  
+                        Whether you're looking for blistering speed, unmatched power, or just a head-turning design, the {car_info["name"]} delivers it all.  
+                        Want to dive deeper into the details?<br><br>Check out the full specifications at the  
+                        <a href="{car_info["features"]["tech_specs"]}" target="_blank">Porsche Technical Details</a> page!
+                        """
 
                     suggestions = [
                         f"What's the top speed of the {car_info['name']}?",
@@ -547,7 +657,7 @@ class PorscheBot:
                         model_names = [
                             model["name"] for model in self.car_data["models"]
                         ]
-                        response = "Here are our available models. Please select the model you are interested in:"
+                        response = f"Hello, {state['userName']}! Here are the available models we offer. Please select the one you're most interested in:"
                         suggestions = model_names + ["Back to main menu"]
                         return {
                             "response": response,
@@ -559,7 +669,7 @@ class PorscheBot:
                         dealer_names = [
                             dealer["name"] for dealer in self.car_data["dealerships"]
                         ]
-                        response = "Here are our available locations. Please select the model you are interested in:"
+                        response = f"Looking for a dealership, {state['userName']}? Here are our available locations. Please select the one closest to you:"
                         suggestions = dealer_names + ["Back to main menu"]
                         return {
                             "response": response,
@@ -567,8 +677,17 @@ class PorscheBot:
                             "state": state,
                         }
 
-                    elif "build" in user_message.lower():
-                        response = 'You can Build your a own porsche at  <a href="https://www.porsche.com/middle-east/modelstart/" target="_blank">Build your own porsche</a>'
+                    elif (
+                        "schedule" in user_message.lower()
+                        or "test drive" in user_message.lower()
+                    ):
+                        response = f"""
+                        Ready for the ultimate driving experience, {state["userName"]}? You can easily schedule a test drive at  
+                        <a href="https://www.porsche.com/middle-east/testdrive/" target="_blank">Book Test Drive</a>. 🚗💨
+                        Feel the power firsthand!
+
+                        Need help finding a dealership or want to go back to the main menu?
+                        """
                         suggestions = ["Back to main menu", "Find a dealership"]
                         return {
                             "response": response,
@@ -576,8 +695,29 @@ class PorscheBot:
                             "state": state,
                         }
 
-                    elif "porshe experience" in user_message.lower():
-                        response = 'You can schedule experience more about porsche at <a href="https://www.porsche.com/middle-east/motorsportandevents/experience/" target="_blank">Porsche Experience</a>'
+                    elif "build" in user_message.lower():
+                        response = f"""
+                        Ready to design your dream car, {state["userName"]}? You can build your very own Porsche at  
+                        <a href="https://www.porsche.com/middle-east/modelstart/" target="_blank">this link</a>. 🛠️🚗  
+                        Customize every detail to match your style and preferences!
+
+                        Need help with your choices or want to go back to the main menu?
+                        """
+                        suggestions = ["Back to main menu", "Find a dealership"]
+                        return {
+                            "response": response,
+                            "suggestions": suggestions,
+                            "state": state,
+                        }
+
+                    elif "porsche experience" in user_message.lower():
+                        response = f"""
+                        Ready to dive deeper into the world of Porsche, {state["userName"]}? You can schedule an unforgettable Porsche experience at  
+                        <a href="https://www.porsche.com/middle-east/motorsportandevents/experience/" target="_blank">this link</a>. 🏎️💨  
+                        Get up close and personal with the Porsche legacy!
+
+                        Need help finding a dealership or want to go back to the main menu?
+                        """
                         suggestions = ["Back to main menu", "Find a dealership"]
                         return {
                             "response": response,
@@ -586,12 +726,12 @@ class PorscheBot:
                         }
 
                     elif "back to main menu" in user_message.lower():
-                        response = f"Hello, {state['userName']}! How can we help you today, {state['userName']}?"
+                        response = f"Welcome back, {state['userName']}! How can we assist you today? 😊"
                         suggestions = [
                             "Explore our models",
                             "Find a dealership",
                             "Schedule a test drive",
-                            "Porshe experience",
+                            "Porsche experience",
                             "Learn about customization options",
                             "Build your Porsche",
                         ]

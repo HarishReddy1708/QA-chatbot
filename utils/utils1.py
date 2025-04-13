@@ -2,7 +2,7 @@ import nltk
 from nltk.stem import PorterStemmer
 import string
 
-nltk.download("punkt")  # Download the Punkt tokenizer if not already installed
+#nltk.download("punkt")  # Download the Punkt tokenizer if not already installed
 
 stemmer = PorterStemmer()
 

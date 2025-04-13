@@ -7,11 +7,17 @@ import string
 import os
 
 # Ensure NLTK data is downloaded
+""" try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt") """
+
+nltk_data_path = os.environ.get("NLTK_DATA", "/usr/share/nltk_data")
+
 try:
     nltk.data.find("tokenizers/punkt")
 except LookupError:
-    nltk.download("punkt")
-
+    nltk.download("punkt", download_dir=nltk_data_path)
 stemmer = PorterStemmer()
 
 # Load the car data from the updated cars.json file to recognize car models
