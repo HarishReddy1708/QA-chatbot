@@ -179,13 +179,12 @@ class PorscheBot:
             "least": "min",
             "best": "max",
             "worst": "min",
-            "top": "max",
-            "shortest": "min",
+            "shortest": "max",
             "expensive": "max",
             "cheapest": "min",
-            "fastest": "max",
-            "slowest": "min",
-            "quickest": "max",
+            "fastest": "min",
+            "slowest": "max",
+            "quickest": "min",
         }
 
         # Default values if no match found
@@ -698,7 +697,7 @@ class PorscheBot:
                     elif "build" in user_message.lower():
                         response = f"""
                         Ready to design your dream car, {state["userName"]}? You can build your very own Porsche at  
-                        <a href="https://www.porsche.com/middle-east/modelstart/" target="_blank">this link</a>. 🛠️🚗  
+                        <a href="https://www.porsche.com/middle-east/modelstart/" target="_blank">Build Your Porsche</a>. 🛠️🚗  
                         Customize every detail to match your style and preferences!
 
                         Need help with your choices or want to go back to the main menu?
@@ -713,7 +712,7 @@ class PorscheBot:
                     elif "porsche experience" in user_message.lower():
                         response = f"""
                         Ready to dive deeper into the world of Porsche, {state["userName"]}? You can schedule an unforgettable Porsche experience at  
-                        <a href="https://www.porsche.com/middle-east/motorsportandevents/experience/" target="_blank">this link</a>. 🏎️💨  
+                        <a href="https://www.porsche.com/middle-east/motorsportandevents/experience/" target="_blank">Porsche Experience</a>. 🏎️💨  
                         Get up close and personal with the Porsche legacy!
 
                         Need help finding a dealership or want to go back to the main menu?
